@@ -279,12 +279,12 @@ class Tracker:
 
 def main():
   # with gui enabled
-  tracker1 = Tracker(gui=True,cam_index=0)
+  tracker1 = Tracker(gui=True,cam_index=2)
   tracker1.addColorBlob("yellow1", r=255, g=255, b=0, r_min=140, r_max=255, g_min=140, g_max=255, b_min=0, b_max=100)
   # tracker.setCroppingPoints(tl_x=20, tl_y=20, br_x=100, br_y=100) 
   tracker1.setMorphologicalOperationParameters(dilation_size=12, erosion_size=2)
 
-  tracker2 = Tracker(gui=True,cam_index=4)
+  tracker2 = Tracker(gui=False,cam_index=4)
   tracker2.addColorBlob("yellow2", r=255, g=255, b=0, r_min=140, r_max=255, g_min=140, g_max=255, b_min=0, b_max=100)
   # tracker.setCroppingPoints(tl_x=20, tl_y=20, br_x=100, br_y=100) 
   tracker2.setMorphologicalOperationParameters(dilation_size=12, erosion_size=2)
@@ -297,14 +297,13 @@ def main():
   # tracker.setMorphologicalOperationParameters(dilation_size=10, erosion_size=10)
 
   while True:
-    #tracker1.processCamera("yellow1")
-    #tracker1.updateVisualizations()
+    tracker1.processCamera("yellow1")
+    tracker1.updateVisualizations()
     #point1 = tracker1.getPoints("green1")
     #print(point1)
-    
     tracker2.processCamera("yellow2")
     tracker2.updateVisualizations()
-    #point2 = tracker2.getPoints("green2")
+    #point2 = tracker2.getPoints("yellow2")
     #print(point2)
   
 main()
